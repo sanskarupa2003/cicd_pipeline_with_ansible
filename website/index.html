@@ -1,11 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CI/CD with Ansible hello</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansible Automation Guide</title>
+    <style>
+        :root {
+            --primary-color: #ee1515;
+            --secondary-color: #c41e3a;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .best-practices {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: white;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .module-item {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .banner {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <h1>CI/CD with Ansible</h1>
+    <header>
+        <h1>Ansible Automation Guide</h1>
+        <p>Infrastructure as Code | Configuration Management | Application Deployment</p>
+    </header>
+
+    <div class="container">
+        <div class="banner">
+            <h2 style="color: white;">Why Choose Ansible?</h2>
+            <p>Agentless | Simple YAML Syntax | Powerful Automation | Community-Driven</p>
+        </div>
+
+        <div class="card">
+            <h2>Core Components</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>Playbooks</h3>
+                    <ul class="info-list">
+                        <li>YAML-based configuration files</li>
+                        <li>Define automation tasks</li>
+                        <li>Reusable and modular</li>
+                        <li>Version control friendly</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <h3>Inventory</h3>
+                    <ul class="info-list">
+                        <li>Host management</li>
+                        <li>Dynamic or static lists</li>
+                        <li>Group-based organization</li>
+                        <li>Variable management</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <h3>Roles</h3>
+                    <ul class="info-list">
+                        <li>Reusable configurations</li>
+                        <li>Structured content</li>
+                        <li>Easy sharing</li>
+                        <li>Galaxy integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Popular Ansible Modules</h2>
+            <div class="module-grid">
+                <div class="module-item">apt/yum</div>
+                <div class="module-item">service</div>
+                <div class="module-item">template</div>
+                <div class="module-item">file</div>
+                <div class="module-item">copy</div>
+                <div class="module-item">git</div>
+                <div class="module-item">docker</div>
+                <div class="module-item">aws</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Key Features</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Idempotency</h3>
+                    <p>Running the same playbook multiple times produces the same result</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Parallel Execution</h3>
+                    <p>Configure multiple servers simultaneously</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Facts Gathering</h3>
+                    <p>Automatic system information collection</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Handler Support</h3>
+                    <p>Trigger actions based on change events</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Best Practices</h2>
+            <div class="best-practices">
+                <ul class="info-list">
+                    <li>Use descriptive names for tasks and plays</li>
+                    <li>Implement proper directory structure</li>
+                    <li>Utilize variables for environment-specific values</li>
+                    <li>Keep sensitive data in encrypted files using Ansible Vault</li>
+                    <li>Use tags for selective task execution</li>
+                    <li>Implement proper error handling</li>
+                    <li>Regular testing of playbooks</li>
+                    <li>Document roles and playbooks</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Advanced Features</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>Ansible Tower</h3>
+                    <ul class="info-list">
+                        <li>Web-based UI</li>
+                        <li>Role-based access control</li>
+                        <li>Job scheduling</li>
+                        <li>Real-time job monitoring</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <h3>Ansible Vault</h3>
+                    <ul class="info-list">
+                        <li>Encrypt sensitive data</li>
+                        <li>Secure variable management</li>
+                        <li>Password protection</li>
+                        <li>Integration with playbooks</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <h3>Dynamic Inventory</h3>
+                    <ul class="info-list">
+                        <li>Cloud provider integration</li>
+                        <li>Auto-discovery of hosts</li>
+                        <li>Custom inventory scripts</li>
+                        <li>Real-time updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
